@@ -247,7 +247,8 @@ html.lenis, html.lenis body {
     align-items: center;
     justify-content: center;
     position: relative;
-    min-height: 80vh;
+    min-height: 100vh;
+    padding-top: 8rem;
     width: 100%;
     background-image:
         repeating-linear-gradient(0deg, transparent 0, transparent 19px, rgba(255, 255, 255, 0.04) 19px, rgba(255, 255, 255, 0.04) 20px),
@@ -275,7 +276,7 @@ html.lenis, html.lenis body {
     z-index: 2;
     width: 92%;
     max-width: 1200px;
-    padding: 8rem 0;
+    padding: 0;
 }
 
 .hero-content {
