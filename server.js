@@ -40,7 +40,7 @@ function clearSessionCookie(res) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(SESSION_SECRET));
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Fichier de config public pour le front (client_id + redirect_uri)
 app.get('/api/config.js', (req, res) => {
