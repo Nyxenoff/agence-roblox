@@ -93,6 +93,7 @@ Dans l'onglet **Settings → Environment Variables**, ajoute :
 | `ROBLOX_CLIENT_ID` | ton Client ID |
 | `ROBLOX_CLIENT_SECRET` | ton Client secret |
 | `ROBLOX_REDIRECT_URI` | `https://rogrid.vercel.app/callback.html` |
+| `ROBLOX_SCOPE` | `openid profile` (ajoute `user.inventory-item:read` pour les gamepasses) |
 | `SESSION_SECRET` | une chaîne aléatoire de 32+ caractères |
 
 L'URL de production est déjà renseignée ci-dessus.
