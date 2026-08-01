@@ -18,14 +18,18 @@ if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI || !process.env.SESSION_SECRET
     console.warn('ATTENTION : variables ROBLOX_CLIENT_ID, ROBLOX_CLIENT_SECRET, ROBLOX_REDIRECT_URI ou SESSION_SECRET manquantes.');
 }
 
-const sessions = {};
-
-function generateSessionId() {
-    return crypto.randomBytes(32).toString('hex');
+function getSession(req) {
+    const raw = req.signedCookies.roblox_session;
+    if (!raw) return null;
+    try {
+        return JSON.parse(raw);
+    } catch {
+        return null;
+    }
 }
 
-function setSessionCookie(res, sessionId) {
-    res.cookie('roblox_sid', sessionId, {
+function setSessionCookie(res, session) {
+    res.cookie('roblox_session', JSON.stringify(session), {
         signed: true,
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
@@ -35,7 +39,7 @@ function setSessionCookie(res, sessionId) {
 }
 
 function clearSessionCookie(res) {
-    res.clearCookie('roblox_sid');
+    res.clearCookie('roblox_session');
 }
 
 app.use(express.json());
@@ -57,8 +61,7 @@ app.get('/api/config.js', (req, res) => {
 
 // Récupère l'utilisateur connecté
 app.get('/api/me', (req, res) => {
-    const sid = req.signedCookies.roblox_sid;
-    const session = sid ? sessions[sid] : null;
+    const session = getSession(req);
 
     if (!session) {
         return res.json({ user: null });
@@ -75,10 +78,6 @@ app.get('/api/me', (req, res) => {
 
 // Déconnexion
 app.post('/api/logout', (req, res) => {
-    const sid = req.signedCookies.roblox_sid;
-    if (sid && sessions[sid]) {
-        delete sessions[sid];
-    }
     clearSessionCookie(res);
     res.json({ ok: true });
 });
@@ -131,8 +130,7 @@ app.post('/api/auth/exchange', async (req, res) => {
 
         const user = await userinfoRes.json();
 
-        const sessionId = generateSessionId();
-        sessions[sessionId] = {
+        const session = {
             robloxId: user.sub,
             name: user.name || user.nickname || user.preferred_username || 'Robloxien',
             picture: user.picture || null,
@@ -141,14 +139,14 @@ app.post('/api/auth/exchange', async (req, res) => {
             expiresAt: Date.now() + tokenData.expires_in * 1000
         };
 
-        setSessionCookie(res, sessionId);
+        setSessionCookie(res, session);
 
         res.json({
             ok: true,
             user: {
-                sub: sessions[sessionId].robloxId,
-                name: sessions[sessionId].name,
-                picture: sessions[sessionId].picture
+                sub: session.robloxId,
+                name: session.name,
+                picture: session.picture
             }
         });
     } catch (err) {
@@ -159,8 +157,7 @@ app.post('/api/auth/exchange', async (req, res) => {
 
 // Vérifie si l'utilisateur connecté possède un gamepass donné
 app.get('/api/owns-gamepass/:passId', async (req, res) => {
-    const sid = req.signedCookies.roblox_sid;
-    const session = sid ? sessions[sid] : null;
+    const session = getSession(req);
 
     if (!session || !session.accessToken) {
         return res.status(401).json({ error: 'Non connecté' });
