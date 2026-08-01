@@ -11,11 +11,10 @@ const PORT = process.env.PORT || 3000;
 const CLIENT_ID = process.env.ROBLOX_CLIENT_ID;
 const CLIENT_SECRET = process.env.ROBLOX_CLIENT_SECRET;
 const REDIRECT_URI = process.env.ROBLOX_REDIRECT_URI;
-const SESSION_SECRET = process.env.SESSION_SECRET;
+const SESSION_SECRET = process.env.SESSION_SECRET || 'default-secret-change-me';
 
-if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI || !SESSION_SECRET) {
-    console.error('ERREUR : les variables ROBLOX_CLIENT_ID, ROBLOX_CLIENT_SECRET, ROBLOX_REDIRECT_URI et SESSION_SECRET sont requises.');
-    process.exit(1);
+if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI || !process.env.SESSION_SECRET) {
+    console.warn('ATTENTION : variables ROBLOX_CLIENT_ID, ROBLOX_CLIENT_SECRET, ROBLOX_REDIRECT_URI ou SESSION_SECRET manquantes.');
 }
 
 const sessions = {};
