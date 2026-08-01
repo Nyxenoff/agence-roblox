@@ -18,7 +18,7 @@ Ce site intègre une vraie connexion via **Roblox Open Cloud OAuth 2.0**.
 - Va sur [Roblox Creator Dashboard → Credentials](https://create.roblox.com/dashboard/credentials).
 - Crée une app OAuth.
 - Récupère le **Client ID** et le **Client secret**.
-- Ajoute l'URL de redirection, par exemple `http://localhost:3000/callback.html` (et la version production).
+- Ajoute l'URL de redirection : `https://rogrid.vercel.app/callback.html` (et `http://localhost:3000/callback.html` pour tester en local).
 
 ### 2. Configurer le fichier `.env`
 
@@ -92,19 +92,19 @@ Dans l'onglet **Settings → Environment Variables**, ajoute :
 | `NODE_ENV` | `production` |
 | `ROBLOX_CLIENT_ID` | ton Client ID |
 | `ROBLOX_CLIENT_SECRET` | ton Client secret |
-| `ROBLOX_REDIRECT_URI` | `https://ton-site.vercel.app/callback.html` |
+| `ROBLOX_REDIRECT_URI` | `https://rogrid.vercel.app/callback.html` |
 | `SESSION_SECRET` | une chaîne aléatoire de 32+ caractères |
 
-Remplace `ton-site` par l'URL réelle donnée par Vercel.
+L'URL de production est déjà renseignée ci-dessus.
 
 ### 4. Mettre à jour Roblox
 
 Dans le dashboard Roblox de ton app OAuth, ajoute l'URL de redirection production :
 
 ```
-https://ton-site.vercel.app/callback.html
+https://rogrid.vercel.app/callback.html
 ```
 
 ### 5. Déployer
 
-Vercel déploie automatiquement. Le site sera disponible sur `https://ton-site.vercel.app`.
+Vercel déploie automatiquement. Le site sera disponible sur `https://rogrid.vercel.app`.
