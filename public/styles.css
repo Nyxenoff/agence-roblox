@@ -1426,11 +1426,10 @@ html.lenis, html.lenis body {
 .profile-hero {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     position: relative;
     min-height: 100vh;
     padding-top: 8rem;
-    padding-left: 4vw;
     width: 100%;
     background: var(--bg);
 }
@@ -1444,7 +1443,6 @@ html.lenis, html.lenis body {
     z-index: 2;
     width: 92%;
     max-width: 1200px;
-    margin: 0;
     padding: 0;
 }
 
