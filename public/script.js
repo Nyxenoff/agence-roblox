@@ -113,19 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     loginBtn.addEventListener('click', async () => {
         if (currentUser) {
-            if (confirm(`Te déconnecter de ${currentUser} ?`)) {
-                try {
-                    await fetch('/api/logout', {
-                        method: 'POST',
-                        credentials: 'same-origin'
-                    });
-                    currentUser = null;
-                    setButtonLoggedOut();
-                    window.location.reload();
-                } catch (err) {
-                    console.error('Erreur de déconnexion :', err);
-                }
-            }
+            window.location.href = 'profile.html';
         } else {
             window.location.href = 'login.html';
         }

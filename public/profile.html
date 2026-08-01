@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon profil — RoGrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-3d">
+        <div class="header-front">
+            <a href="index.html" class="logo">
+                <img src="assets/logo/logo_nobg.png" alt="Logo RoGrid" class="logo-img">
+                Ro<span>Grid</span>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Projets</a>
+                <a href="assets.html" class="nav-link">Bibliothèque</a>
+                <a href="index.html" class="nav-link">Services</a>
+                <a href="index.html" class="nav-link">Tutoriel</a>
+            </nav>
+            <button type="button" id="loginBtn" class="btn btn-primary"><span class="btn-text">Se connecter</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" style="padding-top: 10rem;">
+            <div class="profile-inner" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <article class="card3d profile-card">
+                    <div class="card3d-front" style="padding: 2.5rem;">
+                        <img id="avatar" src="assets/logo/logo_nobg.png" alt="Avatar" class="profile-avatar" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 4px solid var(--primary); background: var(--surface);">
+                        <h1 id="username" class="section-title" style="margin-bottom: 0.5rem;">...</h1>
+                        <p id="robloxId" class="step-description" style="color: var(--muted); font-size: var(--text-sm);">ID Roblox : ...</p>
+
+                        <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                            <button id="logoutBtn" class="btn btn-secondary" style="min-width: 180px;"><span class="btn-text">Se déconnecter</span></button>
+                            <a href="index.html" class="btn btn-primary" style="min-width: 180px;"><span class="btn-text">Retour à l'accueil</span></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" style="padding: 2rem; text-align: center;">
+        <p>&copy; 2026 UnowStudio. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const res = await fetch('/api/me', { credentials: 'same-origin' });
+                const data = await res.json();
+
+                if (!data.user) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                const avatar = document.getElementById('avatar');
+                const username = document.getElementById('username');
+                const robloxId = document.getElementById('robloxId');
+
+                if (avatar && data.user.picture) avatar.src = data.user.picture;
+                if (username) username.textContent = data.user.name;
+                if (robloxId) robloxId.textContent = `ID Roblox : ${data.user.sub}`;
+            } catch (err) {
+                console.error('Erreur chargement profil :', err);
+                window.location.href = 'login.html';
+            }
+
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    try {
+                        await fetch('/api/logout', {
+                            method: 'POST',
+                            credentials: 'same-origin'
+                        });
+                        window.location.href = 'index.html';
+                    } catch (err) {
+                        console.error('Erreur déconnexion :', err);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
