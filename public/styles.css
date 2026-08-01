@@ -1426,46 +1426,41 @@ html.lenis, html.lenis body {
 .profile-hero {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     min-height: 100vh;
     padding-top: 8rem;
+    padding-left: 6vw;
     width: 100%;
     background: var(--bg);
 }
 
 .profile-hero-inner {
-    display: grid;
-    grid-template-columns: 5fr 5fr;
-    align-items: center;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.5rem;
     position: relative;
     z-index: 2;
     width: 92%;
-    max-width: 1200px;
+    max-width: 600px;
     padding: 0;
-}
-
-.profile-left,
-.profile-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
 .profile-hero h1 {
     font-size: var(--text-xl);
     line-height: 1.1;
     font-weight: 800;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0;
+    text-align: left;
 }
 
 .profile-hero p {
     font-size: var(--text-lg);
     color: var(--muted);
-    margin-bottom: 2.4rem;
+    margin-bottom: 0.8rem;
+    text-align: left;
 }
 
 .avatar-3d {
