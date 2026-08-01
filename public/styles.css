@@ -1426,10 +1426,11 @@ html.lenis, html.lenis body {
 .profile-hero {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     min-height: 100vh;
     padding-top: 8rem;
+    padding-left: 4vw;
     width: 100%;
     background: var(--bg);
 }
@@ -1442,8 +1443,8 @@ html.lenis, html.lenis body {
     position: relative;
     z-index: 2;
     width: 92%;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 0;
     padding: 0;
 }
 
@@ -1491,6 +1492,17 @@ html.lenis, html.lenis body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.avatar-card:hover,
+.avatar-card:active {
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.avatar-card:hover .card3d-front,
+.avatar-card:active .card3d-front {
+    top: calc(-1 * var(--depth));
+    background: #303046;
 }
 
 /* ---- Responsive ---- */
