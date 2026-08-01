@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset — RoGrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-3d">
+        <div class="header-front">
+            <a href="index.html" class="logo">
+                <img src="assets/logo/logo_nobg.png" alt="Logo RoGrid" class="logo-img">
+                Ro<span>Grid</span>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Projets</a>
+                <a href="assets.html" class="nav-link">Bibliothèque</a>
+                <a href="index.html" class="nav-link">Services</a>
+                <a href="index.html" class="nav-link">Tutoriel</a>
+            </nav>
+            <button type="button" id="loginBtn" class="btn btn-primary"><span class="btn-text">Se connecter</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="asset-detail">
+            <div class="asset-detail-inner">
+                <a href="assets.html" class="back-link">← Retour à la bibliothèque</a>
+                <article class="card3d asset-detail-card">
+                    <div class="card3d-front">
+                        <div class="asset-detail-grid">
+                            <div class="asset-visual">
+                                <span class="promo-ribbon" id="assetRibbon" style="display: none;"><span class="promo-ribbon-front" id="assetRibbonText">PROMO</span></span>
+                                <div class="asset-gallery">
+                                    <img id="assetImage" src="assets/images/player4.png" alt="Pack d'assets">
+                                </div>
+                            </div>
+                            <div class="asset-info">
+                                <h1 id="assetTitle">Titre de l'asset</h1>
+                                <div class="asset-price-block">
+                                    <span class="asset-price-old" id="assetOldPrice"></span>
+                                    <span class="asset-price-current" id="assetPrice"></span>
+                                </div>
+                                <div class="asset-tags" id="assetTags"></div>
+                                <p id="assetDescription">Description de l'asset.</p>
+                                <h2>Ce que contient le pack</h2>
+                                <ul class="asset-features" id="assetFeatures"></ul>
+                                <div class="asset-actions">
+                                    <a href="index.html#contact" class="btn btn-primary btn-large"><span class="btn-text">Acheter</span></a>
+                                    <a href="assets.html" class="btn btn-secondary btn-large"><span class="btn-text">Continuer</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-cta">
+                <h2>Tu es prêt à lancer ton jeu Roblox ?</h2>
+                <p>Que tu veuilles un mini-jeu, un Obby, un Tycoon, un Simulator, un Battle Royale ou une expérience unique, on s'occupe de tout. On te propose des assets clés en main, du scripting Luau, de l'UI stylée et un accompagnement de A à Z jusqu'à la mise en ligne.</p>
+                <a href="index.html#contact" class="btn btn-primary btn-large"><span class="btn-text">Créer mon jeu</span></a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 UnowStudio. Tous droits réservés.</p>
+                <p>Fait avec passion pour la communauté Roblox.</p>
+                <p>Roblox est une marque déposée de Roblox Corporation. UnowStudio n'est pas affilié à Roblox Corporation.</p>
+                <p><a href="#top">Remonter en haut</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+    <script src="assets-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || 'systeme-nom-tag';
+            const asset = assetsCatalog.find(a => a.id === id) || assetsCatalog[0];
+
+            document.getElementById('assetTitle').textContent = asset.title;
+            document.getElementById('assetImage').src = asset.image;
+            document.getElementById('assetImage').alt = asset.title;
+            document.getElementById('assetDescription').textContent = asset.description;
+
+            const ribbon = document.getElementById('assetRibbon');
+            const ribbonText = document.getElementById('assetRibbonText');
+            if (asset.ribbon) {
+                ribbonText.textContent = asset.ribbon;
+                ribbon.style.display = 'block';
+            } else {
+                ribbon.style.display = 'none';
+            }
+
+            const oldPriceEl = document.getElementById('assetOldPrice');
+            const currentPriceEl = document.getElementById('assetPrice');
+
+            if (asset.oldPrice) {
+                oldPriceEl.innerHTML = `<img src="assets/icons/robux.svg" alt="" class="robux-icon"> ${asset.oldPrice.toLocaleString('fr-FR')}`;
+                oldPriceEl.style.display = 'inline-block';
+            } else {
+                oldPriceEl.style.display = 'none';
+            }
+
+            currentPriceEl.innerHTML = `<img src="assets/icons/robux.svg" alt="" class="robux-icon"> ${asset.price.toLocaleString('fr-FR')}`;
+
+            document.getElementById('assetTags').innerHTML = asset.tags
+                .map(tag => `<span class="asset-tag">${tag}</span>`)
+                .join('');
+
+            document.getElementById('assetFeatures').innerHTML = asset.features
+                .map(feature => `<li>${feature}</li>`)
+                .join('');
+        });
+    </script>
+</body>
+</html>

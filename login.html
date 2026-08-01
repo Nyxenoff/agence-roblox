@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion — RoGrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-3d">
+        <div class="header-front">
+            <a href="index.html" class="logo">
+                <img src="assets/logo/logo_nobg.png" alt="Logo RoGrid" class="logo-img">
+                Ro<span>Grid</span>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Projets</a>
+                <a href="assets.html" class="nav-link">Bibliothèque</a>
+                <a href="index.html" class="nav-link">Services</a>
+                <a href="index.html" class="nav-link">Tutoriel</a>
+            </nav>
+            <button type="button" id="loginBtn" class="btn btn-primary"><span class="btn-text">Se connecter</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="assets-page-inner" style="text-align: center; max-width: 560px;">
+                <h1 class="section-title">Connexion</h1>
+                <p class="step-description" style="margin-bottom: 2rem;">Connecte-toi avec ton compte Roblox officiel pour accéder à ton profil et tes achats.</p>
+                <button type="button" id="robloxLoginBtn" class="btn btn-primary btn-large"><span class="btn-text">Se connecter avec Roblox</span></button>
+                <p class="step-description" style="margin-top: 1.5rem; font-size: var(--text-sm);">Tu seras redirigé vers la page de connexion officielle de Roblox, puis de retour ici.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                <p>© 2026 UnowStudio. Tous droits réservés.</p>
+                <p>Fait avec passion pour la communauté Roblox.</p>
+                <p><a href="index.html">Retour à l'accueil</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+    <script src="/api/config.js"></script>
+    <script>
+        function randomState() {
+            return crypto.randomUUID().replace(/-/g, '');
+        }
+
+        document.getElementById('robloxLoginBtn').addEventListener('click', () => {
+            if (!window.RobloxOAuthConfig || !window.RobloxOAuthConfig.clientId || !window.RobloxOAuthConfig.redirectUri) {
+                alert('Configuration OAuth manquante. Vérifie le fichier .env et relance le serveur.');
+                return;
+            }
+
+            const state = randomState();
+            const nonce = randomState();
+
+            sessionStorage.setItem('roblox_oauth_state', state);
+
+            const params = new URLSearchParams({
+                client_id: window.RobloxOAuthConfig.clientId,
+                redirect_uri: window.RobloxOAuthConfig.redirectUri,
+                scope: 'openid profile',
+                response_type: 'code',
+                state: state,
+                nonce: nonce
+            });
+
+            window.location.href = `https://apis.roblox.com/oauth/v1/authorize?${params.toString()}`;
+        });
+    </script>
+</body>
+</html>

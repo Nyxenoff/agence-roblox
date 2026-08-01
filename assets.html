@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliothèque d'assets — RoGrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-3d">
+        <div class="header-front">
+            <a href="index.html" class="logo">
+                <img src="assets/logo/logo_nobg.png" alt="Logo RoGrid" class="logo-img">
+                Ro<span>Grid</span>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Projets</a>
+                <a href="assets.html" class="nav-link">Bibliothèque</a>
+                <a href="index.html" class="nav-link">Services</a>
+                <a href="index.html" class="nav-link">Tutoriel</a>
+            </nav>
+            <button type="button" id="loginBtn" class="btn btn-primary"><span class="btn-text">Se connecter</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="assets-page">
+            <div class="assets-page-inner">
+                <h1 class="section-title">Tous nos assets</h1>
+                <div id="assetsListGrid" class="assets-list-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-cta">
+                <h2>Tu es prêt à lancer ton jeu Roblox ?</h2>
+                <p>Que tu veuilles un mini-jeu, un Obby, un Tycoon, un Simulator, un Battle Royale ou une expérience unique, on s'occupe de tout. On te propose des assets clés en main, du scripting Luau, de l'UI stylée et un accompagnement de A à Z jusqu'à la mise en ligne.</p>
+                <a href="index.html#contact" class="btn btn-primary btn-large"><span class="btn-text">Créer mon jeu</span></a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 UnowStudio. Tous droits réservés.</p>
+                <p>Fait avec passion pour la communauté Roblox.</p>
+                <p>Roblox est une marque déposée de Roblox Corporation. UnowStudio n'est pas affilié à Roblox Corporation.</p>
+                <p><a href="#top">Remonter en haut</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+    <script src="assets-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('assetsListGrid');
+
+            assetsCatalog.forEach(asset => {
+                const card = document.createElement('article');
+                card.className = 'card3d asset-card' + (asset.ribbon ? ' promo' : '');
+
+                const ribbon = asset.ribbon
+                    ? `<span class="promo-ribbon"><span class="promo-ribbon-front">${asset.ribbon}</span></span>`
+                    : '';
+
+                const priceHtml = asset.oldPrice
+                    ? `<span class="promo-old"><img src="assets/icons/robux.svg" alt="" class="robux-icon"> ${asset.oldPrice.toLocaleString('fr-FR')}</span><span class="promo-current"><img src="assets/icons/robux.svg" alt="" class="robux-icon"> ${asset.price.toLocaleString('fr-FR')}</span>`
+                    : `<img src="assets/icons/robux.svg" alt="" class="robux-icon"> ${asset.price.toLocaleString('fr-FR')}`;
+
+                card.innerHTML = `
+                    <div class="card3d-front">
+                        <div class="asset-image">
+                            <img src="${asset.image}" alt="${asset.title}">
+                            ${ribbon}
+                        </div>
+                        <h3>${asset.title}</h3>
+                        <p>${asset.shortDescription}</p>
+                        <a href="asset.html?id=${asset.id}" class="btn btn-primary"><span class="btn-text">${priceHtml}</span></a>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>

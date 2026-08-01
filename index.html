@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Forge — Agence de création de jeux Roblox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-3d">
+        <div class="header-front">
+            <a href="index.html" class="logo">
+                <img src="assets/logo/logo_nobg.png" alt="Logo RoGrid" class="logo-img">
+                Ro<span>Grid</span>
+            </a>
+            <nav class="main-nav">
+                <a href="#services" class="nav-link">Projets</a>
+                <a href="assets.html" class="nav-link">Bibliothèque</a>
+                <a href="#equipe" class="nav-link">Services</a>
+                <a href="#tutoriel" class="nav-link">Tutoriel</a>
+            </nav>
+            <button type="button" id="loginBtn" class="btn btn-primary"><span class="btn-text">Se connecter</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1>On crée ton jeu Roblox.</h1>
+                    <p>Tu imagines un jeu ? On le construit pour toi. Et si tu veux aller plus vite, achète des assets déjà faits.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary btn-large"><span class="btn-text">Créer mon jeu</span></a>
+                        <a href="assets.html" class="btn btn-secondary btn-large"><span class="btn-text">Acheter des assets</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="visual-front">
+                        <img src="assets/images/player2.png" alt="Personnage Roblox" class="hero-player">
+                        <button type="button" class="btn play-btn" aria-label="Lire la vidéo">
+                            <span class="btn-text">
+                                <img src="assets/icons/play_arrow.svg" alt="" class="play-icon">
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="processus" class="process section">
+            <div class="process-inner">
+                <h2 class="section-title">Comment ça marche ?</h2>
+                <div class="process-grid">
+                    <article class="card3d process-card">
+                        <div class="card3d-front">
+                            <span class="step-number" data-step="01">01</span>
+                            <h3>Tu décris ton projet</h3>
+                            <p>On récolte tes idées, le style de jeu, les fonctionnalités et tes objectifs.</p>
+                        </div>
+                    </article>
+                    <span class="process-arrow" aria-hidden="true"><img src="assets/icons/keyboard_arrow_right.svg" alt="" class="process-arrow-icon"></span>
+                    <article class="card3d process-card">
+                        <div class="card3d-front">
+                            <span class="step-number" data-step="02">02</span>
+                            <h3>On étudie et te propose un devis</h3>
+                            <p>On te propose un planning clair, un prix fixe et les assets dont on a besoin.</p>
+                        </div>
+                    </article>
+                    <span class="process-arrow" aria-hidden="true"><img src="assets/icons/keyboard_arrow_right.svg" alt="" class="process-arrow-icon"></span>
+                    <article class="card3d process-card">
+                        <div class="card3d-front">
+                            <span class="step-number" data-step="03">03</span>
+                            <h3>On développe ton jeu</h3>
+                            <p>Nos devs Roblox codent, intègrent les assets et testent le gameplay.</p>
+                        </div>
+                    </article>
+                    <span class="process-arrow" aria-hidden="true"><img src="assets/icons/keyboard_arrow_right.svg" alt="" class="process-arrow-icon"></span>
+                    <article class="card3d process-card">
+                        <div class="card3d-front">
+                            <span class="step-number" data-step="04">04</span>
+                            <h3>Tu reçois ta livraison</h3>
+                            <p>On te livre le jeu prêt à publier, avec les explications pour le gérer.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="realisations" class="assets section">
+            <div class="assets-inner">
+                <h2 class="section-title">Bibliothèque de packs d'assets</h2>
+                <div class="assets-grid">
+                    <article class="card3d asset-card promo">
+                        <div class="card3d-front">
+                            <div class="asset-image">
+                                <img src="assets/images/player4.png" alt="Pack d'assets">
+                                <span class="promo-ribbon"><span class="promo-ribbon-front">PROMO</span></span>
+                            </div>
+                            <h3>Système de nom &amp; tag</h3>
+                            <p>Affiche et personnalise le nom et le tag des joueurs dans ton jeu Roblox.</p>
+                            <button class="btn btn-primary"><span class="btn-text"><span class="promo-old"><img src="assets/icons/robux.svg" alt="" class="robux-icon"> 149</span><span class="promo-current"><img src="assets/icons/robux.svg" alt="" class="robux-icon"> 99</span></span></button>
+                        </div>
+                    </article>
+                    <article class="card3d asset-card">
+                        <div class="card3d-front">
+                            <div class="asset-image">
+                                <img src="assets/images/player4.png" alt="Pack d'assets">
+                            </div>
+                            <h3>Pack UI &amp; 3D</h3>
+                            <p>Des éléments 3D et des interfaces prêtes à l'emploi.</p>
+                            <button class="btn btn-primary"><span class="btn-text"><img src="assets/icons/robux.svg" alt="" class="robux-icon"> 6 000</span></button>
+                        </div>
+                    </article>
+                    <article class="card3d asset-card">
+                        <div class="card3d-front">
+                            <div class="asset-image">
+                                <img src="assets/images/player4.png" alt="Pack d'assets">
+                            </div>
+                            <h3>Pack complet</h3>
+                            <p>Un kit complet avec scripts, UI et assets personnalisables.</p>
+                            <button class="btn btn-primary"><span class="btn-text"><img src="assets/icons/robux.svg" alt="" class="robux-icon"> 9 000</span></button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq section">
+            <div class="faq-inner">
+                <div class="faq-image">
+                    <img src="assets/images/player3.png" alt="Personnage Roblox">
+                </div>
+                <div class="faq-content">
+                    <h2 class="section-title">FAQ</h2>
+                    <div class="faq-list">
+                        <article class="card3d faq-item">
+                            <div class="card3d-front">
+                                <button type="button" class="faq-question">
+                                    <span>Vous créez mon jeu Roblox de A à Z ?</span>
+                                    <img src="assets/icons/keyboard_arrow_down.svg" alt="" class="faq-icon">
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-inner">
+                                        <p>Oui ! On s'occupe du game design, du code Luau, des assets 3D, de l'UI et de la mise en ligne.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="card3d faq-item">
+                            <div class="card3d-front">
+                                <button type="button" class="faq-question">
+                                    <span>Je peux acheter un pack et le modifier ?</span>
+                                    <img src="assets/icons/keyboard_arrow_down.svg" alt="" class="faq-icon">
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-inner">
+                                        <p>Bien sûr, tous les packs sont personnalisables : tu changes les couleurs, les thèmes et tu ajoutes tes propres idées.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="card3d faq-item">
+                            <div class="card3d-front">
+                                <button type="button" class="faq-question">
+                                    <span>Combien de temps ça prend un projet ?</span>
+                                    <img src="assets/icons/keyboard_arrow_down.svg" alt="" class="faq-icon">
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-inner">
+                                        <p>Ça dépend de l'ambition : un Obby simple peut être prêt en quelques jours, un Battle Royale prend plusieurs semaines.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="card3d faq-item">
+                            <div class="card3d-front">
+                                <button type="button" class="faq-question">
+                                    <span>C'est cher ?</span>
+                                    <img src="assets/icons/keyboard_arrow_down.svg" alt="" class="faq-icon">
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-inner">
+                                        <p>Pas forcément ! On a des packs clés en main à partir de 4 000 R$ et des devis sur mesure pour les gros projets.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="card3d faq-item">
+                            <div class="card3d-front">
+                                <button type="button" class="faq-question">
+                                    <span>Je garde les droits sur mon jeu ?</span>
+                                    <img src="assets/icons/keyboard_arrow_down.svg" alt="" class="faq-icon">
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-inner">
+                                        <p>Totalement. Le jeu est à toi, on te livre les fichiers et on t'aide à publier sur ton groupe Roblox.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section">
+            <div class="contact-inner">
+                <div class="card3d contact-card">
+                    <div class="card3d-front">
+                        <h2 class="section-title">Contact</h2>
+                        <form id="contactForm">
+                            <div class="field-group">
+                                <label class="field-label" for="discord">Pseudo Discord</label>
+                                <div class="field-3d">
+                                    <input type="text" id="discord" name="discord" placeholder="@pseudo" aria-label="Pseudo Discord" required>
+                                </div>
+                            </div>
+                            <div class="field-group">
+                                <label class="field-label" for="email">Adresse mail</label>
+                                <div class="field-3d">
+                                    <input type="email" id="email" name="email" placeholder="ton@email.com" aria-label="Adresse mail" required>
+                                </div>
+                            </div>
+                            <div class="field-group">
+                                <label class="field-label" for="message">Pourquoi tu nous contactes ?</label>
+                                <div class="field-3d">
+                                    <textarea id="message" name="message" rows="4" placeholder="Dis-nous pourquoi tu nous contactes..." aria-label="Pourquoi tu nous contactes" required></textarea>
+                                </div>
+                            </div>
+                            <div class="field-group full submit">
+                                <p id="formStatus" class="form-status"></p>
+                                <button type="submit" class="btn btn-primary btn-large"><span class="btn-text">Envoyer</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="contact-visual">
+                    <img src="assets/images/player1.png" alt="Personnage Roblox">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-cta">
+                <h2>Tu es prêt à lancer ton jeu Roblox ?</h2>
+                <p>Que tu veuilles un mini-jeu, un Obby, un Tycoon, un Simulator, un Battle Royale ou une expérience unique, on s'occupe de tout. On te propose des assets clés en main, du scripting Luau, de l'UI stylée et un accompagnement de A à Z jusqu'à la mise en ligne.</p>
+                <a href="#contact" class="btn btn-primary btn-large"><span class="btn-text">Créer mon jeu</span></a>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <h3>UnowStudio</h3>
+                    <p>Agence spécialisée dans la création de jeux et d'assets Roblox. On transforme tes idées en expériences jouables, modernes et prêtes à publier sur ton groupe.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="YouTube">YouTube</a>
+                        <a href="#" aria-label="TikTok">TikTok</a>
+                        <a href="#" aria-label="Discord">Discord</a>
+                        <a href="#" aria-label="Roblox">Roblox</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Création</h3>
+                    <ul>
+                        <li><a href="#">Jeu sur mesure</a></li>
+                        <li><a href="#">Pack clé en main</a></li>
+                        <li><a href="#">Assets 3D</a></li>
+                        <li><a href="#">Interfaces UI/UX</a></li>
+                        <li><a href="#">Scripting Luau</a></li>
+                        <li><a href="#">Monétisation Robux</a></li>
+                        <li><a href="#">Optimisation mobile</a></li>
+                        <li><a href="#">Publication du jeu</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Ressources</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Tutoriels</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Nos packs</a></li>
+                        <li><a href="#">Réalisations</a></li>
+                        <li><a href="#">Tarifs</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Légal</h3>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Conditions de vente</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">Droit de rétractation</a></li>
+                        <li><a href="#">Gestion des données</a></li>
+                        <li><a href="#">Signaler un contenu</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Email : contact@unowstudio.fr</p>
+                    <p>Discord : @unowstudio</p>
+                    <p>Twitter/X : @unowstudio</p>
+                    <p>YouTube : UnowStudio</p>
+                    <p>TikTok : @unowstudio</p>
+                    <p>Roblox : UnowStudio Group</p>
+                    <p>Horaires : 7j/7, 10h - 22h</p>
+                    <p>Réponse : sous 24h</p>
+                </div>
+            </div>
+
+            <div class="footer-packs">
+                <h3>Les packs les plus demandés</h3>
+                <div class="packs-grid">
+                    <div class="packs-col">
+                        <h4>Obby</h4>
+                        <ul>
+                            <li><a href="#">Obby Easy</a></li>
+                            <li><a href="#">Obby Hardcore</a></li>
+                            <li><a href="#">Obby Tower</a></li>
+                            <li><a href="#">Obby Color Block</a></li>
+                            <li><a href="#">Obby Space</a></li>
+                            <li><a href="#">Obby Parkour</a></li>
+                        </ul>
+                    </div>
+                    <div class="packs-col">
+                        <h4>Tycoon</h4>
+                        <ul>
+                            <li><a href="#">Tycoon Base</a></li>
+                            <li><a href="#">Tycoon Factory</a></li>
+                            <li><a href="#">Tycoon Restaurant</a></li>
+                            <li><a href="#">Tycoon Hotel</a></li>
+                            <li><a href="#">Tycoon Farm</a></li>
+                            <li><a href="#">Tycoon City</a></li>
+                        </ul>
+                    </div>
+                    <div class="packs-col">
+                        <h4>Simulator</h4>
+                        <ul>
+                            <li><a href="#">Pet Simulator</a></li>
+                            <li><a href="#">Mining Simulator</a></li>
+                            <li><a href="#">Lifting Simulator</a></li>
+                            <li><a href="#">Clicker Simulator</a></li>
+                            <li><a href="#">Bubblegum Simulator</a></li>
+                            <li><a href="#">Snowball Simulator</a></li>
+                        </ul>
+                    </div>
+                    <div class="packs-col">
+                        <h4>Combat</h4>
+                        <ul>
+                            <li><a href="#">Battle Royale</a></li>
+                            <li><a href="#">Gun Game</a></li>
+                            <li><a href="#">Sword Fighting</a></li>
+                            <li><a href="#">Boss Battle</a></li>
+                            <li><a href="#">Tower Defense</a></li>
+                            <li><a href="#">Zombie Survival</a></li>
+                        </ul>
+                    </div>
+                    <div class="packs-col">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="#">Roleplay City</a></li>
+                            <li><a href="#">Hangout Café</a></li>
+                            <li><a href="#">Fashion Mall</a></li>
+                            <li><a href="#">Adopt & Care</a></li>
+                            <li><a href="#">School Life</a></li>
+                            <li><a href="#">Camping World</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-newsletter">
+                <div class="newsletter-text">
+                    <h3>Reste dans la boucle</h3>
+                    <p>Reçois les nouveaux packs, tutos et offres directement dans ta boîte mail.</p>
+                </div>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Ton adresse email" aria-label="Email" required>
+                    <button type="submit" class="btn btn-primary"><span class="btn-text">S'abonner</span></button>
+                </form>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 UnowStudio. Tous droits réservés.</p>
+                <p>Fait avec passion pour la communauté Roblox.</p>
+                <p>Design et développement par UnowStudio.</p>
+                <p>Roblox est une marque déposée de Roblox Corporation. UnowStudio n'est pas affilié à Roblox Corporation.</p>
+                <p><a href="#top">Remonter en haut</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

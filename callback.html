@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion en cours — RoGrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <section class="section" style="text-align: center; min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+            <div>
+                <h1 class="section-title">Connexion en cours...</h1>
+                <p id="status" style="color: var(--muted);">Échange du code avec Roblox...</p>
+                <a href="login.html" id="backLink" class="btn btn-secondary" style="display: none; margin-top: 1.5rem;"><span class="btn-text">Réessayer</span></a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (async () => {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            const state = params.get('state');
+            const error = params.get('error');
+            const errorDescription = params.get('error_description');
+            const statusEl = document.getElementById('status');
+            const backLink = document.getElementById('backLink');
+
+            if (error) {
+                statusEl.textContent = `Erreur Roblox : ${errorDescription || error}`;
+                statusEl.style.color = 'var(--primary)';
+                backLink.style.display = 'inline-flex';
+                return;
+            }
+
+            const storedState = sessionStorage.getItem('roblox_oauth_state');
+
+            if (!code || !state || !storedState || state !== storedState) {
+                statusEl.textContent = 'Lien de connexion invalide ou expiré.';
+                statusEl.style.color = 'var(--primary)';
+                backLink.style.display = 'inline-flex';
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/auth/exchange', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || !data.ok) {
+                    throw new Error(data.error || 'Échec de la connexion');
+                }
+
+                sessionStorage.removeItem('roblox_oauth_state');
+                statusEl.textContent = `Bienvenue, ${data.user.name} ! Redirection...`;
+                statusEl.style.color = 'var(--accent)';
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 800);
+            } catch (err) {
+                console.error(err);
+                statusEl.textContent = 'Impossible de finaliser la connexion.';
+                statusEl.style.color = 'var(--primary)';
+                backLink.style.display = 'inline-flex';
+            }
+        })();
+    </script>
+</body>
+</html>
