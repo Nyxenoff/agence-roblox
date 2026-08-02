@@ -62,8 +62,9 @@ html.lenis, html.lenis body {
 
 .header-front {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     align-items: center;
+    gap: 0.6rem;
     padding: 0.9rem 1rem;
     border-radius: var(--radius);
     background: #303046;
