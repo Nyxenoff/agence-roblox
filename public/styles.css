@@ -83,6 +83,26 @@ html.lenis, html.lenis body {
     transform: translateY(calc(var(--depth) * 1.5));
 }
 
+.robux-balance {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transform: translateY(var(--depth));
+}
+
+.robux-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    object-fit: contain;
+}
+
+.robux-amount {
+    font-family: 'Fredoka', sans-serif;
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--text);
+}
+
 .logo {
     font-family: 'Fredoka', sans-serif;
     font-size: var(--text-xl);

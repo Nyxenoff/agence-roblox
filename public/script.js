@@ -78,6 +78,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loginBtn = document.getElementById('loginBtn');
     if (!loginBtn) return;
 
+    const headerFront = loginBtn.closest('.header-front');
+    if (headerFront) {
+        const robuxBalance = document.createElement('div');
+        robuxBalance.className = 'robux-balance';
+        robuxBalance.innerHTML = `<img src="assets/icons/robux.svg" alt="Robux" class="robux-icon"><span class="robux-amount" id="robuxAmount">0</span>`;
+        headerFront.insertBefore(robuxBalance, loginBtn);
+    }
+
     const loginText = loginBtn.querySelector('.btn-text');
 
     let currentUser = null;
